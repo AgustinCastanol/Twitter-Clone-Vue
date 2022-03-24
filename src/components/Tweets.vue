@@ -1,5 +1,5 @@
 <template>
-  <div class="w-1/2 h-full overflow-y-scroll ">
+  <div class="w-full md:w-1/2 h-full overflow-y-scroll ">
     <div class="px-5 py-3 border-b border-lighter flex items-center justify-between">
         <h1 class="text-xl font-bold">Inicio</h1>
         <i class="far fa-star text-xl text-blue"></i>
@@ -119,7 +119,9 @@ export default {
             let newTweet = {
                 content:this.tweet.content
             };
+            if(this.tweet.content !== ""){
             this.tweets.push(newTweet)
+            }
             this.tweet.content= ""
         }
     }
