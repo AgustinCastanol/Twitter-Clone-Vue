@@ -1,9 +1,10 @@
 // import axios from 'axios'
-// const tweetsDB = axios({
+// let db
+//  let postApi = [axios({
 //     method: 'get',
-//     url: 'https://jsonplaceholder.typicode.com/posts',
-//     responseType: 'stream'
-//   })
+//     url: 'https://jsonplaceholder.typicode.com/posts'
+//   })]
+
 const  _tweets=
 [
     {id:1, src: 'elon.jpg', name: 'Elon Musk', handle: '@teslaBoy', time: '20 min', tweet: 'Should I just quarantine on mars??', comments: '1,000', retweets: '550', like: '1,000,003'},
@@ -13,10 +14,14 @@ const  _tweets=
 ]
 
 
-
 export default{
     getTweets(cb){
-        setTimeout(()=>cb(_tweets),1)
+        setTimeout(()=>cb(_tweets),100)
+    },
+    addNewTweetFromDataBase(cb){
+
+        setTimeout(()=>{console.log(cb)},90)
+ 
     }
 }
 

@@ -12,5 +12,6 @@ export default{
     addNewTweet(context, title){
         if(title === "")return;
         context.commit('createTweet',title)
+        api.addNewTweetFromDataBase(title)
     }
 }

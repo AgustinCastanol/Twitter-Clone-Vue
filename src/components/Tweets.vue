@@ -58,7 +58,7 @@
           </div>
         </div>
     </div>
-    <div v-for="follow in following" :key="follow.id" class="w-full p-4 border-b hover:bg-lighter flex">
+    <div v-for="follow in tweets" :key="follow.id" class="w-full p-4 border-b hover:bg-lighter flex">
         <div class="flex-none mr-4">
             <img :src="`${follow.src}`" class="h-12 rounded-full flex-none"/>
         </div>
@@ -101,15 +101,7 @@ export default {
     name: 'tweets-section',
     data() {
         return {      
-            following: [
-                {id:1, src: 'elon.jpg', name: 'Elon Musk', handle: '@teslaBoy', time: '20 min', tweet: 'Should I just quarantine on mars??', comments: '1,000', retweets: '550', like: '1,000,003'},
-                {id:2, src: 'kevin.jpg', name: 'Kevin Hart', handle: '@miniRock', time: '55 min', tweet: 'Should me and the rock do another sub-par movie together????', comments: '2,030', retweets: '50', like: '20,003'},
-                {id:3, src: 'elon.jpg', name: 'Elon Musk', handle: '@teslaBoy', time: '1.4 hr', tweet: 'Haha just made a flame thrower. Shld I sell them?', comments: '100,000', retweets: '1,000,002', like: '5,000,003'},
-                {id:4, src: 'elon.jpg', name: 'Elon Musk', handle: '@teslaBoy', time: '1.4 hr', tweet: 'Just did something crazyyyyyyy', comments: '100,500', retweets: '1,000,032', like: '5,000,103'}
-            ]
-            ,
             tweet: {content: ''}
-            
         }
     },
     async created(){
