@@ -7,10 +7,11 @@
                 <i class="fab fa-twitter"></i>
             </button>
             <div>
-                <button
+                <router-link
                 v-for="tab in tabs"
                 @click="id = tab.id"
                 :key="tab.id"
+                :to="`${tab.id}`"
                 :class="`
                 focus:outline-none hover:text-blue flex items-center py-2 px-4 hover:bg-lightblue rounded-full mr-auto mb-3 
                 ${id == tab.id ? 'text-blue' : ''
@@ -21,7 +22,7 @@
                     text-2xl mr-4 text-left`"
                     ></i>
                     <p class="text-lg font-semibold text-left hidden lg:block">{{ tab.title }}</p>
-                </button>
+                </router-link>
             </div>
             <button class="text-white bg-blue rounded-full font-semibold focus:outline-none w-12 lg:h-auto lg:w-full p-3 hover:ng-darkblue">
             <p class="hidden lg:block">Tweet</p>

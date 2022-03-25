@@ -8,9 +8,9 @@
         <div class="flex-none">
             <img src="profile.png" class="w-12 h-12 rounded-full border borde-lighter">
         </div>
-        <form v-on:submit.prevent="addNewTweet"
+        <form v-on:submit.prevent="addNewTweet(this.tweetsOwns.content)"
         class="w-full px-4 relative ">
-            <textarea v-model="tweet.content"
+            <textarea v-model="tweetsOwns.content"
              placeholder="¿Qué está pasando?" class="mt-3 pb-3  w-full focus:outline-none"></textarea>
             <div class="flex items-center">
             <i class="text-lg text-blue mr-4 far fa-image"></i>
@@ -24,7 +24,7 @@
         </form>
     </div>
     <div class="flex flex-col-reverse">
-        <div v-for="tweet in tweets" :key="tweet.id" class="w-full p-4 border-b hover:bg-lighter flex">
+        <div v-for="tweet in tweetsOwns" :key="tweet.id" class="w-full p-4 border-b hover:bg-lighter flex">
           <div class="flex-none mr-4">
             <img src="profile.png" class="h-12 w-12 rounded-full flex-none"/>
           </div>
@@ -106,24 +106,32 @@ export default {
                 {id:2, src: 'kevin.jpg', name: 'Kevin Hart', handle: '@miniRock', time: '55 min', tweet: 'Should me and the rock do another sub-par movie together????', comments: '2,030', retweets: '50', like: '20,003'},
                 {id:3, src: 'elon.jpg', name: 'Elon Musk', handle: '@teslaBoy', time: '1.4 hr', tweet: 'Haha just made a flame thrower. Shld I sell them?', comments: '100,000', retweets: '1,000,002', like: '5,000,003'},
                 {id:4, src: 'elon.jpg', name: 'Elon Musk', handle: '@teslaBoy', time: '1.4 hr', tweet: 'Just did something crazyyyyyyy', comments: '100,500', retweets: '1,000,032', like: '5,000,103'}
-            ],
-            tweets: [
-                {content: 'Prueba de tweet!'}
-            ],
+            ]
+            ,
             tweet: {content: ''}
             
         }
     },
+    async created(){
+      try{
+        await this.$store.dispatch('getTweets')
+      }catch(error){
+        console.error(error)
+      }
+    },
     methods: {
-        addNewTweet () {
-            let newTweet = {
-                content:this.tweet.content
-            };
-            if(this.tweet.content !== ""){
-            this.tweets.push(newTweet)
-            }
-            this.tweet.content= ""
+        addNewTweet (title) {
+          this.$store.dispatch("addNewTweet",title)
+          this.tweetsOwns.content=""
         }
+        },
+    computed: {
+      tweets(){
+        return this.$store.getters.getTweets
+      },
+      tweetsOwns(){
+        return this.$store.getters.tweetsPublished
+      }
     }
     
 
