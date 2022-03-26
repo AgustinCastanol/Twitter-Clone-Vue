@@ -4,5 +4,8 @@ export default{
     },
     createTweet(state,title){
         state.tweetsOwns.push({id:state.tweetsOwns.length+1,content:title})
+    },
+    setOwnTweets(state,tweet){
+        state.tweetsOwns = tweet
     }
 }

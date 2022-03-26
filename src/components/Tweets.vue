@@ -106,7 +106,8 @@ export default {
     },
     async created(){
       try{
-        await this.$store.dispatch('getTweets')
+        await this.$store.dispatch('getTweetsFollowers')
+        await this.$store.dispatch('getTweetsOwn')
       }catch(error){
         console.error(error)
       }
