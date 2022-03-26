@@ -7,5 +7,8 @@ export default{
     },
     setOwnTweets(state,tweet){
         state.tweetsOwns = tweet
+    },
+    deleteTweet(state, id){
+        state.tweetsOwns = state.tweetsOwns.filter(e=>e.id !== id)
     }
 }

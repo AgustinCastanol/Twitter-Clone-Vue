@@ -33,7 +33,10 @@
               <p class="font-semibold"> Agustin Castañol </p>
               <p class="text-sm text-dark ml-2"> @agustinCas </p>
               <p class="text-sm text-dark ml-2"> 1 seg </p>
-              <i class="fas fa-angle-down text-dark ml-auto"></i>
+                <i class="fas fa-times p-2 
+                text-dark ml-auto hover:text-red-800 hover:bg-red-300 hover:rounded-full"
+                v-on:click.prevent="deleteTweet(tweet.id)"
+                ></i>
             </div>
             <p class="py-2">
               {{ tweet.content }}
@@ -67,7 +70,7 @@
                 <p class="font-semibold"> {{ follow.name }} </p>
                 <p class="text-sm text-dark ml-2"> {{ follow.handle }} </p>
                 <p class="text-sm text-dark ml-2"> {{ follow.time }} </p>
-                <i class="fas fa-angle-down text-dark ml-auto"></i>
+                <i class="fas fa-times text-dark ml-auto"></i>
             </div>
             <p class ="py-2">
                 {{follow.tweet}}
@@ -114,8 +117,13 @@ export default {
     },
     methods: {
         addNewTweet (title) {
-          this.$store.dispatch("addNewTweet",title)
-          this.tweetsOwns.content=""
+         if(title != "")
+          { this.$store.dispatch("addNewTweet",title)
+            this.tweetsOwns.content=""
+          }
+        },
+        deleteTweet(id){
+          this.$store.dispatch("deleteTweet",id);
         }
         },
     computed: {

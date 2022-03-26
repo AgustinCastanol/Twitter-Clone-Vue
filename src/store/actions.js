@@ -16,6 +16,7 @@ export default{
    async getTweetsOwn({ commit }){
     let tweets = []
     await api.getTweetsOwn(tweets).then(e => tweets=e.slice())
+    console.log(tweets)
     commit('setOwnTweets', tweets) 
    },
 
@@ -23,6 +24,10 @@ export default{
         if(title === "")return;
         context.commit('createTweet',title)
         api.addNewTweetFromDataBase(title)
+    },
+    deleteTweet(context, id){
+        context.commit('deleteTweet',id)
+        api.deleteTweetById(id)
     }
 }
 

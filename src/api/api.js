@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import firebaseConfig from './setting'
-import { getFirestore, addDoc,collection, getDocs } from 'firebase/firestore';
+import { getFirestore, addDoc,collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -34,6 +34,9 @@ export default{
         await addDoc(collection(db,"tweets"),{
             content:cb
         })
+    },
+    deleteTweetById(id){
+        deleteDoc(doc(db,"tweets",id))
     }
 }
 
