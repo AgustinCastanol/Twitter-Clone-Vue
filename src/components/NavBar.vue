@@ -32,7 +32,7 @@
 
         <div class="w-full relative">
     
-            <button @click="dropdown =  true" 
+            <button @click="dropdown === true?dropdown = false:dropdown = true" 
             class="flex items-center w-full hover:bg-lightblue rounded-full p-3focus:outline-none">
                 <img src="profile.png" class="w-10 h-10 rounded-full border border-lighter"/>
                 <div class="hidden lg:block ml-4 ">

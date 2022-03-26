@@ -34,7 +34,8 @@
               <p class="text-sm text-dark ml-2"> @agustinCas </p>
               <p class="text-sm text-dark ml-2"> 1 seg </p>
                 <i class="fas fa-times p-2 
-                text-dark ml-auto hover:text-red-800 hover:bg-red-300 hover:rounded-full"
+                text-dark ml-auto hover:text-red-800 hover:bg-red-300 hover:rounded-full
+                transition-all"
                 v-on:click.prevent="deleteTweet(tweet.id)"
                 ></i>
             </div>
